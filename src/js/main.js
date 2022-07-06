@@ -28,21 +28,22 @@ const openCloseLift = () => {
   }, 3000);
 };
 
-const moveLift = (destFloor) => {
+const moveLift = (distance, destFloor) => {
   lift.style.transform = `translateY(${destFloor * 100 * -1}%)`;
-  lift.style.transition = `transform 2500ms ease-in-out`;
+  lift.style.transition = `transform ${2000 * distance}ms ease-in-out`;
 };
 
 let currFloor = 1;
 
 function callLift(destFloor) {
-  currFloor = destFloor;
-
-  moveLift(destFloor);
+  const distance = Math.abs(destFloor - currFloor);
+  moveLift(distance, destFloor);
 
   setTimeout(() => {
     openCloseLift();
-  }, 2000);
+  }, distance * 2000 + 1000);
+
+  currFloor = destFloor;
 }
 
 for (let i = 0; i < buttons.length; i++) {

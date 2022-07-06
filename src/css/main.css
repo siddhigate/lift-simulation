@@ -70,12 +70,12 @@ main {
 
 .left-door-close {
     transform: translateX(0%);
-    transition: transform 2000ms ease-in-out;
+    transition: transform 2500ms ease-in-out;
 }
 
 .right-door-close {
     transform: translateX(-0%);
-    transition: transform 2000ms ease-in-out;
+    transition: transform 2500ms ease-in-out;
 }
 
 .open-lift-btn {
