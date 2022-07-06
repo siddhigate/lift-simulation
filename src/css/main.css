@@ -9,6 +9,8 @@
 
 body {
     height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 input,
@@ -25,8 +27,10 @@ main {
 }
 
 .lift-container {
-    height: 300px;
-    width: 200px;
+    position: absolute;
+    left: 130px;
+    height: 130px;
+    width: 130px;
     background-color: black;
     position: relative;
     z-index: 3;
@@ -84,4 +88,20 @@ main {
 
 .open-lift-btn:disabled {
     opacity: 0.5;
+}
+
+.floors {
+    position: relative;
+}
+
+.floor {
+    border-top: 1px solid gray;
+    height: 130px;
+    display: flex;
+}
+
+.lift-buttons {
+    width: 130px;
+    height: 130px;
+    border-right: 1px solid gray;
 }

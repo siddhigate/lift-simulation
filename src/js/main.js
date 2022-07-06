@@ -1,9 +1,10 @@
-const openLiftBtn = document.querySelector(".open-lift-btn");
+const buttons = document.querySelectorAll(".open-lift-btn");
+const lift = document.querySelector(".lift-container");
 const leftDoor = document.querySelector(".left-door");
 const rightDoor = document.querySelector(".right-door");
 
 const openLift = () => {
-  openLiftBtn.disabled = true;
+  buttons.disabled = true;
   rightDoor.classList.add("right-door-open");
   leftDoor.classList.add("left-door-open");
 
@@ -17,16 +18,40 @@ const closeLift = () => {
 
   rightDoor.classList.remove("right-door-open");
   leftDoor.classList.remove("left-door-open");
-  openLiftBtn.disabled = false;
+  buttons.disabled = false;
 };
 
 const openCloseLift = () => {
-    openLift();
-    setTimeout(() => {
-      closeLift();
-    }, 3000);
+  openLift();
+  setTimeout(() => {
+    closeLift();
+  }, 3000);
+};
+
+const moveLift = (destFloor) => {
+  lift.style.transform = `translateY(${destFloor * 100 * -1}%)`;
+  lift.style.transition = `transform 2500ms ease-in-out`;
+};
+
+let currFloor = 1;
+
+function callLift(destFloor) {
+  currFloor = destFloor;
+
+  moveLift(destFloor);
+
+  setTimeout(() => {
+    openCloseLift();
+  }, 2000);
 }
 
-openLiftBtn.addEventListener("click", () => {
-  openCloseLift();
-});
+for (let i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener("click", () => {
+    callLift(buttons.length - i - 1);
+  });
+}
+
+const viewportwidth = document.getElementsByTagName("body")[0].clientWidth,
+  viewportheight = document.getElementsByTagName("body")[0].clientHeight;
+
+console.log(viewportwidth, viewportheight);
