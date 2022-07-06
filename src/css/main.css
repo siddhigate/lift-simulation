@@ -1,0 +1,87 @@
+/*
+ *  RESETS
+ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+}
+
+input,
+button {
+    font: inherit;
+}
+
+/* 
+ * Lift style
+ */
+
+main {
+    padding: 3rem;
+}
+
+.lift-container {
+    height: 300px;
+    width: 200px;
+    background-color: black;
+    position: relative;
+    z-index: 3;
+    overflow: hidden;
+}
+
+.left-door {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 50%;
+    background-color: yellow;
+    z-index: 1;
+
+}
+
+.right-door {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 50%;
+    background-color: hotpink;
+    z-index: 1;
+}
+
+.left-door-open {
+    transform: translateX(-100%);
+    transition: transform 2000ms ease-in-out;
+}
+
+.right-door-open {
+    transform: translateX(100%);
+    transition: transform 2000ms ease-in-out;
+}
+
+.left-door-close {
+    transform: translateX(0%);
+    transition: transform 2000ms ease-in-out;
+}
+
+.right-door-close {
+    transform: translateX(-0%);
+    transition: transform 2000ms ease-in-out;
+}
+
+.open-lift-btn {
+    margin: 1rem;
+    padding: 0.25rem 1rem;
+    background-color: pink;
+    border: 1px solid pink;
+    cursor: pointer;
+}
+
+.open-lift-btn:disabled {
+    opacity: 0.5;
+}
