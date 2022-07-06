@@ -23,7 +23,7 @@
 <body>
 
     <!-- <main>
-        <button class="open-lift-btn">Open lift</button>
+        <button class="call-lift-btn open-lift-btn">Open lift</button>
         <div class="lift-container">
 
             <div class="left-door">
@@ -38,11 +38,11 @@
     <header>
         <h1>Lift Simulator</h1>
         <div class="add-btns">
-            <button class="add-btn">
+            <button class="add-btn" data-lift-num="4">
                 <i class="fa-solid fa-plus"></i>
                 Floor
             </button>
-            <button class="add-btn">
+            <button class="add-btn" data-lift-num="4">
                 <i class="fa-solid fa-plus"></i>
                 Lift
             </button>
@@ -50,52 +50,53 @@
     </header>
 
     <div class="floors">
+        
         <div class="floor">
             <div class="lift-buttons">
-                <button class="open-lift-btn">
+                <button class="call-lift-btn open-lift-btn" data-lift-num="4">
                     <i class="fa-solid fa-angle-up"></i>
                 </button>
-                <button class="close-lift-btn">
+                <button class="call-lift-btn close-lift-btn" data-lift-num="4">
                     <i class="fa-solid fa-angle-down"></i>
                 </button>
             </div>
         </div>
         <div class="floor">
             <div class="lift-buttons">
-                <button class="open-lift-btn">
+                <button class="call-lift-btn open-lift-btn" data-lift-num="3">
                     <i class="fa-solid fa-angle-up"></i>
                 </button>
-                <button class="close-lift-btn">
+                <button class="call-lift-btn close-lift-btn" data-lift-num="3">
                     <i class="fa-solid fa-angle-down"></i>
                 </button>
             </div>
         </div>
         <div class="floor">
             <div class="lift-buttons">
-                <button class="open-lift-btn">
+                <button class="call-lift-btn open-lift-btn" data-lift-num="2">
                     <i class="fa-solid fa-angle-up"></i>
                 </button>
-                <button class="close-lift-btn">
+                <button class="call-lift-btn close-lift-btn" data-lift-num="2">
                     <i class="fa-solid fa-angle-down"></i>
                 </button>
             </div>
         </div>
         <div class="floor">
             <div class="lift-buttons">
-                <button class="open-lift-btn">
+                <button class="call-lift-btn open-lift-btn" data-lift-num="1">
                     <i class="fa-solid fa-angle-up"></i>
                 </button>
-                <button class="close-lift-btn">
+                <button class="call-lift-btn close-lift-btn" data-lift-num="1">
                     <i class="fa-solid fa-angle-down"></i>
                 </button>
             </div>
         </div>
         <div class="floor" style="border-bottom: 1px solid gray">
             <div class="lift-buttons">
-                <button class="open-lift-btn">
+                <button class="call-lift-btn open-lift-btn" data-lift-num="0">
                     <i class="fa-solid fa-angle-up"></i>
                 </button>
-                <button class="close-lift-btn">
+                <button class="call-lift-btn close-lift-btn" data-lift-num="0">
                     <i class="fa-solid fa-angle-down"></i>
                 </button>
             </div>

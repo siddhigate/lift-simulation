@@ -1,4 +1,4 @@
-const buttons = document.querySelectorAll(".open-lift-btn");
+const buttons = document.querySelectorAll(".call-lift-btn");
 const lift = document.querySelector(".lift-container");
 const leftDoor = document.querySelector(".left-door");
 const rightDoor = document.querySelector(".right-door");
@@ -47,12 +47,12 @@ function callLift(destFloor) {
 }
 
 for (let i = 0; i < buttons.length; i++) {
+  console.log(buttons[i].dataset.liftNum)
   buttons[i].addEventListener("click", () => {
-    callLift(buttons.length - i - 1);
+    callLift(buttons[i].dataset.liftNum);
   });
 }
 
 const getMaxLifts = () => {
   const viewportwidth = document.getElementsByTagName("body")[0].clientWidth;
-  
-}
+};

@@ -47,7 +47,7 @@ header {
     margin-right: 0.5rem;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 700px) {
     header {
         flex-direction: column;
         padding-bottom: 1rem;
