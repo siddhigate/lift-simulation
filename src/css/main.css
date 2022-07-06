@@ -11,11 +11,47 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
+    font-family: 'Lora', serif;
 }
 
 input,
 button {
     font: inherit;
+}
+
+header {
+    padding: 0 1rem 0 1rem;
+    border-bottom: 3px solid #CBD5E1;
+    margin-bottom: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.add-btns {
+    display: flex;
+    margin-right: 1rem
+}
+
+.add-btns button {
+    margin-right: 1rem;
+    background-color: #8B5CF6;
+    border: 1px solid #8B5CF6;
+    color: white;
+    border-radius: 5px;
+    padding: 0.5rem 1.25rem;
+    cursor: pointer;
+}
+
+.add-btns button i {
+    margin-right: 0.5rem;
+}
+
+@media screen and (max-width: 1200px) {
+    header {
+        flex-direction: column;
+        padding-bottom: 1rem;
+    }
 }
 
 /* 
@@ -28,9 +64,9 @@ main {
 
 .lift-container {
     position: absolute;
-    left: 130px;
-    height: 130px;
-    width: 130px;
+    left: 30px;
+    height: 100px;
+    width: 70px;
     background-color: black;
     position: relative;
     z-index: 3;
@@ -43,7 +79,8 @@ main {
     bottom: 0;
     left: 0;
     right: 50%;
-    background-color: yellow;
+    background-color: #94A3B8;
+    border: 2px solid #475569;
     z-index: 1;
 
 }
@@ -54,7 +91,8 @@ main {
     bottom: 0;
     right: 0;
     left: 50%;
-    background-color: hotpink;
+    background-color: #94A3B8;
+    border: 2px solid #475569;
     z-index: 1;
 }
 
@@ -78,13 +116,33 @@ main {
     transition: transform 2500ms ease-in-out;
 }
 
-.open-lift-btn {
-    margin: 1rem;
-    padding: 0.25rem 1rem;
-    background-color: pink;
-    border: 1px solid pink;
+
+.lift-buttons {
+    width: 130px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem
+}
+
+.lift-buttons button {
+    height: 2.25rem;
+    width: 2.25rem;
+    border-radius: 50%;
     cursor: pointer;
 }
+
+.lift-buttons .open-lift-btn {
+    background-color: #C4B5FD;
+    border: 1px solid #C4B5FD;
+}
+
+.lift-buttons .close-lift-btn {
+    background-color: #D9F99D;
+    border: 1px solid #D9F99D;
+}
+
 
 .open-lift-btn:disabled {
     opacity: 0.5;
@@ -95,13 +153,7 @@ main {
 }
 
 .floor {
-    border-top: 1px solid gray;
-    height: 130px;
+    border-bottom: 1px solid #CBD5E1;
+    height: 100px;
     display: flex;
-}
-
-.lift-buttons {
-    width: 130px;
-    height: 130px;
-    border-right: 1px solid gray;
 }

@@ -30,10 +30,10 @@ const openCloseLift = () => {
 
 const moveLift = (distance, destFloor) => {
   lift.style.transform = `translateY(${destFloor * 100 * -1}%)`;
-  lift.style.transition = `transform ${2000 * distance}ms ease-in-out`;
+  lift.style.transition = `transform ${1500 * distance}ms ease-in-out`;
 };
 
-let currFloor = 1;
+let currFloor = 0;
 
 function callLift(destFloor) {
   const distance = Math.abs(destFloor - currFloor);
@@ -41,7 +41,7 @@ function callLift(destFloor) {
 
   setTimeout(() => {
     openCloseLift();
-  }, distance * 2000 + 1000);
+  }, distance * 1500 + 1000);
 
   currFloor = destFloor;
 }
@@ -52,7 +52,7 @@ for (let i = 0; i < buttons.length; i++) {
   });
 }
 
-const viewportwidth = document.getElementsByTagName("body")[0].clientWidth,
-  viewportheight = document.getElementsByTagName("body")[0].clientHeight;
-
-console.log(viewportwidth, viewportheight);
+const getMaxLifts = () => {
+  const viewportwidth = document.getElementsByTagName("body")[0].clientWidth;
+  
+}
