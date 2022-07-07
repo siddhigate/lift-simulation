@@ -198,7 +198,6 @@ document.addEventListener("liftIdle", () => {
  *
  */
 
-let currFloors = [0, 0];
 let requests = new Queue();
 
 function main() {
