@@ -1,7 +1,7 @@
 const buttons = document.querySelectorAll(".call-lift-btn");
 const liftEls = document.querySelectorAll(".lift-container");
-const leftDoor = document.querySelector(".left-door");
-const rightDoor = document.querySelector(".right-door");
+const leftDoors = document.querySelectorAll(".left-door");
+const rightDoors = document.querySelectorAll(".right-door");
 
 class Queue {
   constructor() {
@@ -81,21 +81,21 @@ function addLift() {}
  *    open, close, move up, down.
  *
  */
-const openLift = () => {
+const openLift = (index) => {
   buttons.disabled = true;
-  rightDoor.classList.add("right-door-open");
-  leftDoor.classList.add("left-door-open");
+  rightDoors[index].classList.add("right-door-open");
+  leftDoors[index].classList.add("left-door-open");
 
-  rightDoor.classList.remove("right-door-close");
-  leftDoor.classList.remove("left-door-close");
+  rightDoors[index].classList.remove("right-door-close");
+  leftDoors[index].classList.remove("left-door-close");
 };
 
 const closeLift = (index) => {
-  rightDoor.classList.add("right-door-close");
-  leftDoor.classList.add("left-door-close");
+  rightDoors[index].classList.add("right-door-close");
+  leftDoors[index].classList.add("left-door-close");
 
-  rightDoor.classList.remove("right-door-open");
-  leftDoor.classList.remove("left-door-open");
+  rightDoors[index].classList.remove("right-door-open");
+  leftDoors[index].classList.remove("left-door-open");
   buttons.disabled = false;
 
   setTimeout(() => {
@@ -105,7 +105,7 @@ const closeLift = (index) => {
 };
 
 const openCloseLift = (index) => {
-  openLift();
+  openLift(index);
   setTimeout(() => {
     closeLift(index);
   }, 3000);
