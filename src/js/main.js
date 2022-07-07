@@ -56,25 +56,29 @@ function getLifts() {
 function getClosestEmptyLift(destFloor) {
   const lifts = getLifts();
 
-  const closestLift = lifts
-    .reduce(
-      (result, value, i) =>
-        result.concat(
-          value.busy === false
-            ? {
-                i,
-                currFloor: value.currFloor,
-                distance: Math.abs(destFloor - value.currFloor),
-              }
-            : []
-        ),
-      []
-    )
-    .reduce((result, value, index) =>
-      value.distance < result.distance ? value : result
-    );
+  const emptyLifts = lifts.reduce(
+    (result, value, i) =>
+      result.concat(
+        value.busy === false
+          ? {
+              i,
+              currFloor: value.currFloor,
+              distance: Math.abs(destFloor - value.currFloor),
+            }
+          : []
+      ),
+    []
+  );
 
-  const index = closestLift.i;  
+  if (emptyLifts.length <= 0) {
+    return { lift: {}, index: -1 };
+  }
+
+  const closestLift = emptyLifts.reduce((result, value, index) =>
+    value.distance < result.distance ? value : result
+  );
+
+  const index = closestLift.i;
 
   return { lift: lifts[index], index };
 }
@@ -84,13 +88,11 @@ const getMaxLifts = () => {
 };
 
 const callLift = () => {
-  const destFloor = requests.dequeue();
-
-  const { lift, index } = getClosestEmptyLift(destFloor);
+  const { lift, index } = getClosestEmptyLift(requests.peek());
 
   if (index >= 0) {
     lifts[index].busy = true;
-    moveLift(lift.htmlEl, destFloor, index);
+    moveLift(lift.htmlEl, requests.dequeue(), index);
   }
 };
 
