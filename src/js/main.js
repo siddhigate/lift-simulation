@@ -112,8 +112,8 @@ const openCloseLift = (index) => {
 };
 
 const moveLift = (lift, destFloor, index) => {
-  const distance = Math.abs(destFloor - currFloor);
-
+  const distance = Math.abs(destFloor - currFloors[index]);
+  console.log(distance, 1500 * distance)
   lift.style.transform = `translateY(${destFloor * 100 * -1}%)`;
   lift.style.transition = `transform ${1500 * distance}ms ease-in-out`;
 
@@ -121,7 +121,7 @@ const moveLift = (lift, destFloor, index) => {
     openCloseLift(index);
   }, distance * 1500 + 1000);
 
-  currFloor = destFloor;
+  currFloors[index] = destFloor;
 };
 
 
@@ -175,7 +175,7 @@ document.addEventListener("liftIdle", () => {
  *
  */
 
-let currFloor = 0;
+let currFloors = [0, 0];
 let requests = new Queue();
 
 function main() {
