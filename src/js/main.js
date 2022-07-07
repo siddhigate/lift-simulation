@@ -188,7 +188,6 @@ function dispatchliftIdle() {
 }
 
 document.addEventListener("requestAdded", () => {
-  console.log(requests.items);
   callLift();
 });
 
@@ -214,7 +213,6 @@ function addLift() {
     busy: false,
     currFloor: 0,
   });
-  console.log(lifts);
   leftDoors = document.querySelectorAll(".left-door");
   rightDoors = document.querySelectorAll(".right-door");
 }
