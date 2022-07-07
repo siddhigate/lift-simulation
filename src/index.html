@@ -10,9 +10,66 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
+
+    <!-- <main>
+        <button class="call-lift-btn open-lift-btn">Open lift</button>
+        <div class="lift-container">
+
+            <div class="left-door">
+
+            </div>
+            <div class="right-door">
+
+            </div>
+        </div>
+    </main> -->
+
+    <header>
+        <h1>Lift Simulator</h1>
+        <div class="add-btns">
+            <button class="add-floor-btn" data-lift-num="4">
+                <i class="fa-solid fa-plus"></i>
+                Floor
+            </button>
+            <button class="add-lift-btn" data-lift-num="4">
+                <i class="fa-solid fa-plus"></i>
+                Lift
+            </button>
+        </div>
+    </header>
+
+    <div class="floors">
+        <div class="floor" style="border-bottom: 1px solid gray">
+            <div class="lift-buttons">
+                <button class="call-lift-btn open-lift-btn" data-lift-num="0">
+                    <i class="fa-solid fa-angle-up"></i>
+                </button>
+                <button class="call-lift-btn close-lift-btn" data-lift-num="0">
+                    <i class="fa-solid fa-angle-down"></i>
+                </button>
+            </div>
+            <div class="lift-container">
+
+                <div class="left-door">
+
+                </div>
+                <div class="right-door">
+
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="./js/main.js"></script>
 </body>
