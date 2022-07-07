@@ -46,16 +46,35 @@ class Queue {
 
 const lifts = Array.from(
   document.querySelectorAll(".lift-container"),
-  (el) => ({ htmlEl: el, busy: false })
+  (el) => ({ htmlEl: el, busy: false, currFloor: 0 })
 );
 
 function getLifts() {
   return lifts;
 }
 
-function getEmptyLift() {
+function getClosestEmptyLift(destFloor) {
   const lifts = getLifts();
-  const index = lifts.findIndex((lift) => lift.busy === false);
+
+  const closestLift = lifts
+    .reduce(
+      (result, value, i) =>
+        result.concat(
+          value.busy === false
+            ? {
+                i,
+                currFloor: value.currFloor,
+                distance: Math.abs(destFloor - value.currFloor),
+              }
+            : []
+        ),
+      []
+    )
+    .reduce((result, value, index) =>
+      value.distance < result.distance ? value : result
+    );
+
+  const index = closestLift.i;  
 
   return { lift: lifts[index], index };
 }
@@ -65,11 +84,13 @@ const getMaxLifts = () => {
 };
 
 const callLift = () => {
-  const { lift, index } = getEmptyLift();
+  const destFloor = requests.dequeue();
 
-  if (index >= 0 && !requests.isEmpty()) {
+  const { lift, index } = getClosestEmptyLift(destFloor);
+
+  if (index >= 0) {
     lifts[index].busy = true;
-    moveLift(lift.htmlEl, requests.dequeue(), index);
+    moveLift(lift.htmlEl, destFloor, index);
   }
 };
 
@@ -112,8 +133,7 @@ const openCloseLift = (index) => {
 };
 
 const moveLift = (lift, destFloor, index) => {
-  const distance = Math.abs(destFloor - currFloors[index]);
-  console.log(distance, 1500 * distance)
+  const distance = Math.abs(destFloor - lifts[index].currFloor);
   lift.style.transform = `translateY(${destFloor * 100 * -1}%)`;
   lift.style.transition = `transform ${1500 * distance}ms ease-in-out`;
 
@@ -121,9 +141,8 @@ const moveLift = (lift, destFloor, index) => {
     openCloseLift(index);
   }, distance * 1500 + 1000);
 
-  currFloors[index] = destFloor;
+  lifts[index].currFloor = destFloor;
 };
-
 
 /**
  *
@@ -166,7 +185,9 @@ document.addEventListener("requestAdded", () => {
 });
 
 document.addEventListener("liftIdle", () => {
-  callLift();
+  if (!requests.isEmpty()) {
+    callLift();
+  }
 });
 
 /**
