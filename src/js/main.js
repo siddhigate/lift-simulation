@@ -218,7 +218,7 @@ function addLift() {
 }
 
 function getLiftEl() {
-  const liftDistance = (lifts.length + 1) * 150;
+  const liftDistance = (lifts.length + 1) * 120;
 
   const liftEL = document.createElement("div");
   liftEL.classList.add("lift-container");

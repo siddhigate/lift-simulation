@@ -118,7 +118,7 @@ main {
 
 
 .lift-buttons {
-    width: 130px;
+    width: 100px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -127,8 +127,8 @@ main {
 }
 
 .lift-buttons button {
-    height: 2.25rem;
-    width: 2.25rem;
+    height: 2rem;
+    width: 2rem;
     border-radius: 50%;
     cursor: pointer;
 }
