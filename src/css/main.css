@@ -73,6 +73,11 @@ main {
     overflow: hidden;
 }
 
+.lift-2 {
+    position: absolute;
+    left: 300px
+}
+
 .left-door {
     position: absolute;
     top: 0;
