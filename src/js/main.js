@@ -101,8 +101,6 @@ const callLift = () => {
   }
 };
 
-function addLift() {}
-
 /**
  *
  *    LIFT ACTIONS -> animations
