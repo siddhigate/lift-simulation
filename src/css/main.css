@@ -157,3 +157,8 @@ main {
     height: 100px;
     display: flex;
 }
+
+button:disabled {
+    opacity: 0.5;
+    cursor: no-drop;
+}

@@ -90,6 +90,7 @@ function getClosestEmptyLift(destFloor) {
 
 const getMaxLifts = () => {
   const viewportwidth = document.getElementsByTagName("body")[0].clientWidth;
+  return Math.floor(((viewportwidth - 100)/120));
 };
 
 const callLift = () => {
@@ -213,6 +214,13 @@ function addLift() {
   });
   leftDoors = document.querySelectorAll(".left-door");
   rightDoors = document.querySelectorAll(".right-door");
+
+  if(lifts.length >= getMaxLifts()) {
+    console.log("Max lifts added");
+    addLiftBtn.disabled = true;
+    addLiftBtn.textContent = "Max lifts added"
+    return;
+  }
 }
 
 function getLiftEl() {
