@@ -1,9 +1,9 @@
 let buttons = document.querySelectorAll(".call-lift-btn");
 const addLiftBtn = document.querySelector(".add-lift-btn");
 const addFloorBtn = document.querySelector(".add-floor-btn");
-const liftEls = document.querySelectorAll(".lift-container");
-const leftDoors = document.querySelectorAll(".left-door");
-const rightDoors = document.querySelectorAll(".right-door");
+let liftEls = document.querySelectorAll(".lift-container");
+let leftDoors = document.querySelectorAll(".left-door");
+let rightDoors = document.querySelectorAll(".right-door");
 const floorsContainer = document.querySelector(".floors");
 let floors = document.querySelectorAll(".floor");
 
@@ -48,10 +48,11 @@ class Queue {
  *
  */
 
-const lifts = Array.from(
-  document.querySelectorAll(".lift-container"),
-  (el) => ({ htmlEl: el, busy: false, currFloor: 0 })
-);
+const lifts = Array.from(document.querySelectorAll(".lift-container"), (el) => ({
+  htmlEl: el,
+  busy: false,
+  currFloor: 0,
+}));
 
 function getLifts() {
   return lifts;
@@ -205,6 +206,37 @@ document.addEventListener("liftIdle", () => {
  *
  */
 
+function addLift() {
+  floors[floors.length - 1].append(getLiftEl());
+  liftEls = document.querySelectorAll(".lift-container");
+  lifts.push({
+    htmlEl: liftEls[liftEls.length - 1],
+    busy: false,
+    currFloor: 0,
+  });
+  console.log(lifts);
+  leftDoors = document.querySelectorAll(".left-door");
+  rightDoors = document.querySelectorAll(".right-door");
+}
+
+function getLiftEl() {
+  const liftDistance = (lifts.length + 1) * 150;
+
+  const liftEL = document.createElement("div");
+  liftEL.classList.add("lift-container");
+  liftEL.style.position = "absolute";
+  liftEL.style.left = `${liftDistance}px`;
+
+  liftEL.innerHTML += `
+            <div class="left-door">
+            </div>
+            <div class="right-door">
+            </div>
+        `;
+
+  return liftEL;
+}
+
 function addFloor() {
   floorsContainer.prepend(getFloorEl());
   floors = document.querySelectorAll(".floor");
@@ -231,15 +263,12 @@ function getFloorEl() {
 }
 
 function addCallLiftListeners(buttons) {
-
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", () => {
       addRequest(buttons[i].dataset.liftNum);
     });
   }
 }
-
-
 
 /**
  *
@@ -252,6 +281,7 @@ let requests = new Queue();
 function main() {
   addCallLiftListeners(buttons);
   addFloorBtn.addEventListener("click", addFloor);
+  addLiftBtn.addEventListener("click", addLift);
 }
 
 main();
