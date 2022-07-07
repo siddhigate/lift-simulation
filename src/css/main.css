@@ -162,3 +162,20 @@ button:disabled {
     opacity: 0.5;
     cursor: no-drop;
 }
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #CBD5E1;
+}
+
+footer a {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+footer a:hover {
+    font-weight: 600;
+}
